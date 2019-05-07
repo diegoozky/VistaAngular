@@ -1,0 +1,36 @@
+<h1>Experiencia laborales</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Fecha de inicio</th>
+      <th scope="col">Fecha fin</th>
+      <th scope="col">Empresa</th>
+      <th scope="col">Clientes</th>
+      <th scope="col">Puesto</th>
+      <th scope="col">Funciones</th>
+      <th scope="col">Entornos</th>
+      <th scope="col">Id de candidatos</th>
+      <th scope="col" style="text-align: center">Accion</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of experiencias">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.fecha_inicio}}</td>
+      <td>{{item.fecha_fin}}</td>
+      <td>{{item.empresa}}</td>
+      <td>{{item.clientes}}</td>
+      <td>{{item.puesto}}</td>
+      <td>{{item.funciones}}</td>
+      <td>{{item.entornos}}</td>
+      <td><!--<button type="button" (click)="obtenerDatos(item)" (click)="updateExperiencia()"  class="btn btn-success" data-toggle="modal" data-target="#myModal" >Editar</button>
+        <button type="button" (click)="obtenerDatos(item)" (click)="deleteExperiencia()"   class="btn btn-danger">Eliminar</button>-->
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#añadir">Añadir experiencia</button>

@@ -1,0 +1,155 @@
+<h1>Candidatos registrados</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Segundo apellido</th>
+      <th scope="col">DNI</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Poblacion</th>
+      <th scope="col">CP</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Fecha de nacimiento</th>
+      <th scope="col">Fecha de alta</th>
+      <th scope="col">Fecha de baja</th>
+      <th scope="col" style="text-align: center">Accion</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of candidatos">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.nombre}}</td>
+      <td>{{item.primer_Apellido}}</td>
+      <td>{{item.segundo_Apellido}}</td>
+      <td>{{item.dni}}</td>
+      <td>{{item.telefono}}</td>
+      <td>{{item.correo}}</td>
+      <td>{{item.poblacion}}</td>
+      <td>{{item.cp}}</td>
+      <td>{{item.direccion}}</td>
+      <td>{{item.fecha_nacimiento}}</td>
+      <td>{{item.fecha_alta}}</td>
+      <td>{{item.fecha_baja}}</td>
+      <td><button type="button" (click)="obtenerDatos(item)" class="btn btn-success" data-toggle="modal" data-target="#myModal" >Editar</button>
+        <button type="button" (click)="obtenerDatos(item)" (click)="deleteCandidato()"   class="btn btn-danger">Eliminar</button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+<br>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#añadir" >Añadir Candidato</button>
+  <!-- Trigger the modal with a button -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Editar Candidato</h4>
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form > 
+            ID <input class="form-control" type="text" name="id" value={{c.id}} readonly>
+            
+            Nombre <input class="form-control" type="text" name="nombre" value={{c.nombre}} [(ngModel)]="c.nombre">
+            
+            Apellido <input class="form-control" type="text" name="primer_Apellido" value={{c.primer_Apellido}} [(ngModel)]="c.primer_Apellido">
+            
+            Segundo apellido <input class="form-control" type="text" name="segundo_Apellido" value={{c.segundo_Apellido}} [(ngModel)]="c.segundo_Apellido">
+            
+            DNI <input class="form-control" type="text" name="dni" value={{c.dni}} [(ngModel)]="c.dni" maxlength=9 minlength=9>
+            
+            telefono <input class="form-control" type="text" name="telefono" value={{c.telefono}} [(ngModel)]="c.telefono" maxlength=9 minlength=9>
+
+            Correo <input class="form-control" type="text" name="correo" value={{c.correo}} [(ngModel)]="c.correo">
+
+            Poblacion <input class="form-control" type="text" name="poblacion" value={{c.poblacion}} [(ngModel)]="c.poblacion">
+
+            CP <input class="form-control" type="text" name="cp" value={{c.cp}} [(ngModel)]="c.cp">
+
+            Direccion <input class="form-control" type="text" name="direccion" value={{c.direccion}} [(ngModel)]="c.direccion">
+
+            Fecha de nacimiento <input class="form-control" type="text" name="fecha_nacimiento" value={{c.fecha_nacimiento}} [(ngModel)]="c.fecha_nacimiento">
+
+            Fecha de alta <input class="form-control" type="text" name="fecha_alta" value={{c.fecha_alta}} [(ngModel)]="c.fecha_alta">
+
+            Fecha de baja <input class="form-control" type="text" name="fecha_baja" value={{c.fecha_baja}} [(ngModel)]="c.fecha_baja">
+
+
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="updateCandidato()" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
+          
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+   <!-- Modal -->
+   <div class="modal fade" id="añadir" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Añadir Candidato</h4>
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form > 
+            ID <input class="form-control" type="text" name="id"  readonly value="">
+            
+            Nombre <input class="form-control" type="text" name="nombre"  [(ngModel)]="can.nombre" value=""> 
+            
+            Apellido <input class="form-control" type="text" name="primer_Apellido"  [(ngModel)]="can.primer_Apellido" value="">
+            
+            Segundo apellido <input class="form-control" type="text" name="segundo_Apellido"  [(ngModel)]="can.segundo_Apellido" value="">
+            
+            DNI <input class="form-control" type="text" name="dni"  [(ngModel)]="can.dni" value="" maxlength=9 minlength=9>
+            
+            telefono <input class="form-control" type="text" name="telefono"  [(ngModel)]="can.telefono" value="" maxlength=9 minlength=9>
+
+            Correo <input class="form-control" type="text" name="correo"  [(ngModel)]="can.correo" value="">
+
+            Poblacion <input class="form-control" type="text" name="poblacion" [(ngModel)]="can.poblacion" value="">
+
+            CP <input class="form-control" type="text" name="cp"  [(ngModel)]="can.cp" value="">
+
+            Direccion <input class="form-control" type="text" name="direccion"  [(ngModel)]="can.direccion" value="">
+
+            Fecha de nacimiento <input class="form-control" type="date" name="fecha_nacimiento" [(ngModel)]="can.fecha_nacimiento" value="">
+
+            Fecha de alta <input class="form-control" type="date" name="fecha_alta" [(ngModel)]="can.fecha_alta" value="">
+
+            Fecha de baja <input class="form-control" type="date" name="fecha_baja" [(ngModel)]="can.fecha_baja" value="">
+
+
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="saveCandidato()" class="btn btn-primary" data-dismiss="modal">Añadir</button>
+          
+
+        </div>
+      </div>
+      
+    </div>
+  </div>

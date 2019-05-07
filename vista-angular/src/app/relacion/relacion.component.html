@@ -1,0 +1,64 @@
+<div class="container">
+<h1>Candidatos registrados</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Id Candidato</th>
+      <th scope="col">Id Tecnologia</th>
+      <th scope="col">Experiencia</th>
+      <th scope="col">Nivel</th>
+      <th scope="col">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of relaciones">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.id_CANDIDATO.id}}</td>
+      <td>{{item.id_TECNOLOGIA.id}}</td>
+      <td>{{item.experiencia}}</td>
+      <td>{{item.nivel}}</td>
+      <td style="text-align: center">
+        <button type="button" (click)="obtenerDatos(item)" (click)="deleteRelacion()"   class="btn btn-danger">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#añadir" >Añadir relacion</button>
+
+ <!-- Modal -->
+ <div class="modal fade" id="añadir" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">Editar Candidato</h4>
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form >   
+          ID candidato <input class="form-control" type="number" name="id_candidato" value ="" [(ngModel)]="r1.idcandidato.id">
+          
+          ID tecnologia <input class="form-control" type="number" name="id_tecnologia" value ="" [(ngModel)]="r1.idtecnologia.id">
+          
+          Experiencia <input class="form-control" type="text" name="experiencia" value ="" [(ngModel)]="r1.experiencia">
+          
+          Nivel <input class="form-control" type="text" name="nivel" value ="" [(ngModel)]="r1.nivel">
+          
+          
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="saveRelacion()" class="btn btn-primary" data-dismiss="modal">Actualizar</button>
+        
+
+      </div>
+    </div>
+    
+  </div>
+</div>
